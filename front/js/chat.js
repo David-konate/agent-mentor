@@ -37,8 +37,7 @@ formulaire.addEventListener("submit", async (event) => {
   saisie.value = "";
 
   const mode = document.querySelector('input[name="mode"]:checked').value;
-  const lang = localStorage.getItem("langue") || "fr";   // langue choisie (FR/EN)
-  const { ok, data } = await API.sendChat(mode, Chat.historique, lang);
+  const { ok, data } = await API.sendChat(mode, Chat.historique);
 
   if (ok) {
     UI.addMessage(data.response, "agent");

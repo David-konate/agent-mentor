@@ -13,10 +13,9 @@ def chat():
 
     data = request.get_json()
     mode = data.get("mode", "tutor")
-    lang = data.get("lang", "fr")
     messages = data.get("messages", [])
 
-    response = handle_chat(session["user_id"], session.get("first_name"), mode, lang, messages)
+    response = handle_chat(session["user_id"], session.get("first_name"), mode, messages)
     return jsonify({"response": response})
 
 

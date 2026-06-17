@@ -72,12 +72,20 @@ Tu es actuellement en mode Copilote.
 """
 
 
-def build_prompt(mode, first_name=None, lang="fr"):
+def build_prompt(mode, first_name=None):
+    # repondre dans la langue de la QUESTION (et pas celle du prompt, qui est en francais)
+    langue = (
+        "### LANGUE — PRIORITÉ ###\n"
+        "Réponds TOUJOURS dans la même langue que le dernier message de l'utilisateur : "
+        "français si sa question est en français, anglais si elle est en anglais. "
+        "Adapte aussi les 3 questions du Test de Maîtrise à cette langue.\n\n"
+    )
+
     # base commune + le bloc du mode choisi
     if mode == "copilot":
-        prompt = SYSTEM_BASE + COPILOT_MODE
+        prompt = langue + SYSTEM_BASE + COPILOT_MODE
     else:
-        prompt = SYSTEM_BASE + TUTOR_MODE
+        prompt = langue + SYSTEM_BASE + TUTOR_MODE
 
     # si on connait le prenom, on le passe a l'ia
     if first_name:
@@ -86,17 +94,5 @@ def build_prompt(mode, first_name=None, lang="fr"):
             f"Tu t'adresses à {first_name}. Utilise son prénom naturellement "
             "dans tes réponses, sans en abuser.\n"
         )
-
-    # langue de reponse (suit le bouton FR/EN de l'interface)
-    if lang == "en":
-        prompt += (
-            "\n# LANGUE\nRéponds ENTIÈREMENT en anglais, même si ces instructions sont en français.\n"
-            "Pour le Test de Maîtrise, utilise EXACTEMENT ces 3 questions en anglais :\n"
-            "1. Understanding: do you really understand what you just learned?\n"
-            "2. Autonomy: could you rewrite it on your own tomorrow?\n"
-            "3. Defensibility: can you explain and justify your approach?\n"
-        )
-    else:
-        prompt += "\n# LANGUE\nRéponds toujours en français.\n"
 
     return prompt
