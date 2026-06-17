@@ -72,7 +72,7 @@ Tu es actuellement en mode Copilote.
 """
 
 
-def build_prompt(mode, first_name=None):
+def build_prompt(mode, first_name=None, lang="fr"):
     # base commune + le bloc du mode choisi
     if mode == "copilot":
         prompt = SYSTEM_BASE + COPILOT_MODE
@@ -86,5 +86,17 @@ def build_prompt(mode, first_name=None):
             f"Tu t'adresses à {first_name}. Utilise son prénom naturellement "
             "dans tes réponses, sans en abuser.\n"
         )
+
+    # langue de reponse (suit le bouton FR/EN de l'interface)
+    if lang == "en":
+        prompt += (
+            "\n# LANGUE\nRéponds ENTIÈREMENT en anglais, même si ces instructions sont en français.\n"
+            "Pour le Test de Maîtrise, utilise EXACTEMENT ces 3 questions en anglais :\n"
+            "1. Understanding: do you really understand what you just learned?\n"
+            "2. Autonomy: could you rewrite it on your own tomorrow?\n"
+            "3. Defensibility: can you explain and justify your approach?\n"
+        )
+    else:
+        prompt += "\n# LANGUE\nRéponds toujours en français.\n"
 
     return prompt

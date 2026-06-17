@@ -14,10 +14,20 @@ const Chat = {
   },
 };
 
-document.getElementById("formulaire").addEventListener("submit", async (event) => {
+const formulaire = document.getElementById("formulaire");
+const saisie = document.getElementById("saisie");
+
+// Entrée = envoyer / Maj+Entrée = saut de ligne
+saisie.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey) {
+    event.preventDefault();
+    formulaire.requestSubmit();
+  }
+});
+
+formulaire.addEventListener("submit", async (event) => {
   event.preventDefault();
 
-  const saisie = document.getElementById("saisie");
   const question = saisie.value.trim();
   if (!question) return;
 
@@ -27,7 +37,8 @@ document.getElementById("formulaire").addEventListener("submit", async (event) =
   saisie.value = "";
 
   const mode = document.querySelector('input[name="mode"]:checked').value;
-  const { ok, data } = await API.sendChat(mode, Chat.historique);
+  const lang = localStorage.getItem("langue") || "fr";   // langue choisie (FR/EN)
+  const { ok, data } = await API.sendChat(mode, Chat.historique, lang);
 
   if (ok) {
     UI.addMessage(data.response, "agent");

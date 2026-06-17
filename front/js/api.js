@@ -27,11 +27,11 @@ const API = {
     await fetch("api/logout", { method: "POST" });
   },
 
-  async sendChat(mode, messages) {
+  async sendChat(mode, messages, lang) {
     const reponse = await fetch("api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ mode: mode, messages: messages }),
+      body: JSON.stringify({ mode: mode, messages: messages, lang: lang }),
     });
     return { ok: reponse.ok, data: await reponse.json() };
   },
