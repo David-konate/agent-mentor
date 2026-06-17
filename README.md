@@ -80,10 +80,4 @@ Ouvre ensuite **http://127.0.0.1:5000** dans ton navigateur.
 
 ---
 
-## 🎓 Pour la soutenance — points à valoriser
 
-- **Séparation front/back** et pourquoi le Python ne descend pas dans le navigateur.
-- **Sécurité** : clé API côté serveur uniquement, jamais exposée au client.
-- **Le system prompt** (`prompt.py`) comme implémentation concrète de la convention.
-- **Le mode Tuteur/Copilote** qui matérialise l'Article 4 (formation → entreprise).
-- **Le Test de Maîtrise** posé en fin de réponse comme garde-fou pédagogique.
