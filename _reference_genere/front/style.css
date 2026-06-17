@@ -1,0 +1,124 @@
+/* style.css - apparence du chat, sans framework (CSS pur) */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+header {
+  border-bottom: 1px solid #1e293b;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+h1 {
+  font-size: 1.4rem;
+}
+
+.sous-titre {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+}
+
+.mode {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  display: flex;
+  gap: 1.2rem;
+}
+
+.mode label {
+  cursor: pointer;
+}
+
+#conversation {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 0.4rem;
+}
+
+.message {
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-width: 85%;
+}
+
+.message.user {
+  background: #2563eb;
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 2px;
+}
+
+.message.agent {
+  background: #1e293b;
+  align-self: flex-start;
+  border-bottom-left-radius: 2px;
+}
+
+.message.agent.chargement {
+  color: #94a3b8;
+  font-style: italic;
+}
+
+#formulaire {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+}
+
+#saisie {
+  flex: 1;
+  resize: none;
+  border-radius: 10px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: #e2e8f0;
+  padding: 0.7rem;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+#saisie:focus {
+  outline: 2px solid #2563eb;
+}
+
+#envoyer {
+  border: none;
+  border-radius: 10px;
+  background: #2563eb;
+  color: #fff;
+  padding: 0 1.3rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+#envoyer:hover {
+  background: #1d4ed8;
+}
+
+#envoyer:disabled {
+  background: #475569;
+  cursor: not-allowed;
+}

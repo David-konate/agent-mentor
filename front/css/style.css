@@ -1,0 +1,216 @@
+/* ===================== Reset & variables ===================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0b1020;
+  --surface: #161c2e;
+  --surface-2: #1e2740;
+  --border: #2a3350;
+  --text: #e8ecf5;
+  --muted: #95a0bd;
+  --accent: #6366f1;
+  --accent-2: #8b5cf6;
+  --danger: #f87171;
+  --radius: 14px;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* ===================== Base ===================== */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(139, 92, 246, 0.18), transparent 60%),
+    radial-gradient(900px 500px at -10% 10%, rgba(99, 102, 241, 0.15), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  line-height: 1.5;
+}
+
+/* ===================== Header ===================== */
+header {
+  width: 100%;
+  max-width: 760px;
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+
+header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; }
+header p { color: var(--muted); font-size: 0.95rem; margin-top: 0.3rem; }
+
+.langues { display: flex; gap: 0.4rem; justify-content: flex-end; margin-bottom: 0.6rem; }
+.langues button {
+  padding: 0.25rem 0.7rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  background: var(--surface-2);
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s;
+  box-shadow: none;
+}
+.langues button:hover { color: var(--text); border-color: var(--accent); filter: none; transform: none; }
+
+/* ===================== Conteneurs ===================== */
+#auth-view, #chat-view { width: 100%; max-width: 760px; }
+
+/* ===================== Formulaires d'auth ===================== */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 360px;
+  margin: 1rem auto;
+  padding: 1.6rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.auth-form h2 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+.auth-form input {
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  color: var(--text);
+  font-size: 0.95rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.auth-form input::placeholder { color: var(--muted); }
+.auth-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+#auth-error { color: var(--danger); text-align: center; font-size: 0.9rem; min-height: 1.2rem; }
+
+/* ===================== Boutons (par défaut) ===================== */
+button {
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.7rem 1.2rem;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.35);
+  transition: transform 0.12s, filter 0.15s;
+}
+button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+button:active { transform: translateY(0); }
+
+/* ===================== Barre "Bonjour" ===================== */
+.bienvenue {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.8rem;
+}
+#bonjour { font-weight: 600; }
+#logout-btn {
+  background: var(--surface-2);
+  color: var(--muted);
+  box-shadow: none;
+  border: 1px solid var(--border);
+  padding: 0.4rem 0.9rem;
+  font-size: 0.82rem;
+}
+#logout-btn:hover { color: var(--text); border-color: var(--danger); filter: none; transform: none; }
+
+/* ===================== Sélecteur de mode ===================== */
+#chat-view > label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0 0.4rem 0.8rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+#chat-view > label input { accent-color: var(--accent); }
+
+/* ===================== Conversation ===================== */
+#conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  height: 55vh;
+  overflow-y: auto;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-bottom: 0.8rem;
+}
+#conversation::-webkit-scrollbar { width: 8px; }
+#conversation::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+
+/* ===================== Bulles de message ===================== */
+.message {
+  padding: 0.8rem 1rem;
+  border-radius: 16px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  max-width: 80%;
+  font-size: 0.95rem;
+  animation: pop 0.18s ease-out;
+}
+.message.user {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff;
+  align-self: flex-end;
+  border-bottom-right-radius: 4px;
+}
+.message.agent {
+  background: var(--surface-2);
+  color: var(--text);
+  align-self: flex-start;
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--border);
+}
+
+@keyframes pop {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===================== Formulaire de saisie ===================== */
+#formulaire { display: flex; gap: 0.6rem; }
+#saisie {
+  flex: 1;
+  resize: none;
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+#saisie::placeholder { color: var(--muted); }
+#saisie:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 600px) {
+  header h1 { font-size: 1.4rem; }
+  .message { max-width: 90%; }
+  #conversation { height: 50vh; }
+}

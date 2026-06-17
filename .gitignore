@@ -1,0 +1,32 @@
+# ===== Secrets (NE JAMAIS commiter) =====
+.env
+.env.local
+# (.env.example reste suivi : c'est le modèle sans secrets)
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# ===== Environnements virtuels =====
+venv/
+.venv/
+env/
+
+# ===== Bases de données locales (SQLite) =====
+*.db
+*.sqlite3
+
+# ===== Éditeurs / IDE =====
+.vscode/
+.idea/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ===== Logs =====
+*.log

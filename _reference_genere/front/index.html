@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mentor Senior - Assistant CDA</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>🧑‍🏫 Mentor Senior</h1>
+    <p class="sous-titre">Ton tuteur IA pour la formation CDA — il te guide, il ne fait pas le travail a ta place.</p>
+
+    <!-- Selecteur de mode pedagogique (Article 4) -->
+    <div class="mode">
+      <label>
+        <input type="radio" name="mode" value="tuteur" checked />
+        Tuteur (formation)
+      </label>
+      <label>
+        <input type="radio" name="mode" value="copilote" />
+        Copilote (entreprise)
+      </label>
+    </div>
+  </header>
+
+  <main id="conversation" aria-live="polite">
+    <!-- Les messages s'ajoutent ici dynamiquement -->
+    <div class="message agent">
+      Bonjour 👋 Je suis ton Mentor Senior. Pose-moi une question sur Angular,
+      Java/Spring, SQL ou Git. Astuce : formule ta demande avec la methode
+      <strong>TCREI</strong> (Tache, Contexte, Reference, Role, Indicateur)
+      pour que je puisse vraiment t'aider a progresser.
+    </div>
+  </main>
+
+  <form id="formulaire">
+    <textarea
+      id="saisie"
+      placeholder="Ex : Agis comme un mentor Java. Explique-moi le role de @Autowired avec un exemple court, sans me donner tout le code."
+      rows="3"
+      required></textarea>
+    <button type="submit" id="envoyer">Envoyer</button>
+  </form>
+
+  <script src="app.js"></script>
+</body>
+</html>
