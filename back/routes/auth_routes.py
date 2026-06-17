@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-auth_routes.py  (couche ROUTE)
-==============================
-Endpoints HTTP d'authentification. Gère la requête/réponse + la SESSION.
-"""
 from flask import Blueprint, request, jsonify, session
 
 from controllers.auth_controller import register, login
@@ -20,10 +14,10 @@ def route_register():
 
     success, result = register(first_name, email, password)
     if not success:
-        return jsonify({"error": result}), 400      # 400 = mauvaise demande
+        return jsonify({"error": result}), 400
 
-    # Ouvrir la session (connexion auto après inscription)
-    session["user_id"] = result                      # on stocke l'ID, jamais le mdp
+    # connexion auto apres inscription
+    session["user_id"] = result
     session["first_name"] = first_name
     return jsonify({"message": "Inscription réussie", "first_name": first_name})
 
@@ -36,20 +30,22 @@ def route_login():
 
     user = login(email, password)
     if user is None:
-        return jsonify({"error": "Email ou mot de passe incorrect."}), 401   # 401 = non autorisé
+        return jsonify({"error": "Email ou mot de passe incorrect."}), 401
 
     session["user_id"] = user["id"]
     session["first_name"] = user["first_name"]
     return jsonify({"message": "Connexion réussie", "first_name": user["first_name"]})
 
 
-@auth_bp.route("/api/logout", methods=["POST"])
-def route_logout():
-    session.clear()                                  # vide la session = déconnecté
-    return jsonify({"message": "Déconnecté"})
-
 @auth_bp.route("/api/me", methods=["GET"])
 def route_me():
+    # le front demande qui est connecte
     if "user_id" not in session:
         return jsonify({"connected": False})
     return jsonify({"connected": True, "first_name": session.get("first_name")})
+
+
+@auth_bp.route("/api/logout", methods=["POST"])
+def route_logout():
+    session.clear()
+    return jsonify({"message": "Déconnecté"})

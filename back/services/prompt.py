@@ -73,13 +73,13 @@ Tu es actuellement en mode Copilote.
 
 
 def build_prompt(mode, first_name=None):
-    """Assemble le system prompt : base + mode + (optionnel) personnalisation."""
+    # base commune + le bloc du mode choisi
     if mode == "copilot":
         prompt = SYSTEM_BASE + COPILOT_MODE
     else:
         prompt = SYSTEM_BASE + TUTOR_MODE
 
-    # Personnalisation : si on connaît le prénom, on le dit à l'IA
+    # si on connait le prenom, on le passe a l'ia
     if first_name:
         prompt += (
             "\n# INTERLOCUTEUR\n"

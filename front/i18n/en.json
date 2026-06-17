@@ -4,5 +4,14 @@
   "mode_tutor": "Tutor",
   "mode_copilot": "Copilot",
   "input_placeholder": "Ask your question...",
-  "send": "Send"
+  "send": "Send",
+  "login_title": "Login",
+  "register_title": "Sign up",
+  "login_button": "Log in",
+  "register_button": "Sign up",
+  "logout": "Log out",
+  "hello": "Hello",
+  "email": "Email",
+  "password": "Password",
+  "first_name": "First name"
 }

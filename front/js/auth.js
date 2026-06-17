@@ -1,18 +1,15 @@
-// auth.js — COUCHE CONTROLLER (authentification)
-// Orchestre connexion / inscription / déconnexion via API et UI.
-
-// Au chargement : qui est connecté ?
+// au chargement : qui est connecte ?
 async function checkAuth() {
   const data = await API.getMe();
   if (data.connected) {
     UI.showChat(data.first_name);
-    Chat.loadHistory();          // recharge ses anciens messages
+    Chat.loadHistory();
   } else {
     UI.showAuth();
   }
 }
 
-// INSCRIPTION
+// inscription
 document.getElementById("register-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   UI.showError("");
@@ -31,7 +28,7 @@ document.getElementById("register-form").addEventListener("submit", async (event
   }
 });
 
-// CONNEXION
+// connexion
 document.getElementById("login-form").addEventListener("submit", async (event) => {
   event.preventDefault();
   UI.showError("");
@@ -49,10 +46,10 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
   }
 });
 
-// DÉCONNEXION
+// deconnexion
 document.getElementById("logout-btn").addEventListener("click", async () => {
   await API.logout();
   UI.showAuth();
 });
 
-checkAuth();   // on lance la vérif dès l'ouverture
+checkAuth();

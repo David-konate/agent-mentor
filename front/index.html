@@ -24,18 +24,18 @@
     <!-- ═══════ VUE AUTH (visible si PAS connecté) ═══════ -->
     <div id="auth-view">
         <form id="login-form" class="auth-form">
-            <h2>Connexion</h2>
-            <input type="email" id="login-email" placeholder="Email" required>
-            <input type="password" id="login-password" placeholder="Mot de passe" required>
-            <button type="submit">Se connecter</button>
+            <h2 data-i18n="login_title">Connexion</h2>
+            <input type="email" id="login-email" data-i18n-placeholder="email" placeholder="Email" required>
+            <input type="password" id="login-password" data-i18n-placeholder="password" placeholder="Mot de passe" required>
+            <button type="submit" data-i18n="login_button">Se connecter</button>
         </form>
 
         <form id="register-form" class="auth-form">
-            <h2>Inscription</h2>
-            <input type="text" id="register-firstname" placeholder="Prénom" required>
-            <input type="email" id="register-email" placeholder="Email" required>
-            <input type="password" id="register-password" placeholder="Mot de passe" required>
-            <button type="submit">S'inscrire</button>
+            <h2 data-i18n="register_title">Inscription</h2>
+            <input type="text" id="register-firstname" data-i18n-placeholder="first_name" placeholder="Prénom" required>
+            <input type="email" id="register-email" data-i18n-placeholder="email" placeholder="Email" required>
+            <input type="password" id="register-password" data-i18n-placeholder="password" placeholder="Mot de passe" required>
+            <button type="submit" data-i18n="register_button">S'inscrire</button>
         </form>
 
         <p id="auth-error"></p>
@@ -44,8 +44,8 @@
     <!-- ═══════ VUE CHAT (visible si connecté) ═══════ -->
     <div id="chat-view" style="display: none;">
         <div class="bienvenue">
-            <span id="bonjour"></span>
-            <button type="button" id="logout-btn">Déconnexion</button>
+            <span><span data-i18n="hello">Bonjour</span> <span id="bonjour"></span> 👋</span>
+            <button type="button" id="logout-btn" data-i18n="logout">Déconnexion</button>
         </div>
 
         <label><input type="radio" name="mode" value="tutor" checked> <span data-i18n="mode_tutor">Tuteur</span></label>
