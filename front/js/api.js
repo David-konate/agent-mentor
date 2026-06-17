@@ -4,13 +4,13 @@
 const API = {
   // Qui est connecté ? -> { connected, first_name }
   async getMe() {
-    const reponse = await fetch("/api/me");
+    const reponse = await fetch("api/me");
     return reponse.json();
   },
 
   // Inscription -> { ok, data }
   async register(firstName, email, password) {
-    const reponse = await fetch("/api/register", {
+    const reponse = await fetch("api/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ first_name: firstName, email: email, password: password }),
@@ -20,7 +20,7 @@ const API = {
 
   // Connexion -> { ok, data }
   async login(email, password) {
-    const reponse = await fetch("/api/login", {
+    const reponse = await fetch("api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: email, password: password }),
@@ -30,12 +30,12 @@ const API = {
 
   // Déconnexion
   async logout() {
-    await fetch("/api/logout", { method: "POST" });
+    await fetch("api/logout", { method: "POST" });
   },
 
   // Envoyer un message au chat -> { ok, data }
   async sendChat(mode, messages) {
-    const reponse = await fetch("/api/chat", {
+    const reponse = await fetch("api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ mode: mode, messages: messages }),
@@ -45,7 +45,7 @@ const API = {
 
   // Récupérer l'historique -> { messages: [...] }
   async getHistory() {
-    const reponse = await fetch("/api/history");
+    const reponse = await fetch("api/history");
     if (!reponse.ok) return { messages: [] };
     return reponse.json();
   },
