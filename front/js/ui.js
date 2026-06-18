@@ -25,7 +25,14 @@ const UI = {
     // author = "user" ou "agent" (pour la couleur de la bulle)
     const div = document.createElement("div");
     div.className = "message " + author;
-    div.textContent = text;
+    if (author === "agent") {
+      // l'agent : on rend le Markdown, nettoye contre le XSS avant affichage
+      div.innerHTML = DOMPurify.sanitize(marked.parse(text));
+      // coloration syntaxique des blocs de code
+      div.querySelectorAll("pre code").forEach((bloc) => hljs.highlightElement(bloc));
+    } else {
+      div.textContent = text;   // l'utilisateur : texte brut (plus sur)
+    }
     _conversation.appendChild(div);
     _conversation.scrollTop = _conversation.scrollHeight;
   },

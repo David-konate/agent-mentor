@@ -187,6 +187,25 @@ button:active { transform: translateY(0); }
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* ===================== Rendu Markdown (reponses de l'agent) ===================== */
+.message.agent { white-space: normal; }            /* le HTML gere la mise en page */
+.message.agent p { margin: 0.4rem 0; }
+.message.agent ul, .message.agent ol { margin: 0.4rem 0 0.4rem 1.2rem; }
+.message.agent pre {
+  background: #0b1020;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem;
+  overflow-x: auto;
+  margin: 0.5rem 0;
+}
+.message.agent code { font-family: Consolas, "Courier New", monospace; font-size: 0.88rem; }
+.message.agent :not(pre) > code {   /* code "inline" dans une phrase */
+  background: #0b1020;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
 /* ===================== Formulaire de saisie ===================== */
 #formulaire { display: flex; gap: 0.6rem; }
 #saisie {
